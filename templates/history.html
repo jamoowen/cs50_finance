@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+<h1>Account</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th>Quantity Bought</th>
+            <th>Quantity Sold</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for i in rows %}
+            <tr>
+                <td>{{ i["symbol"] }}</td>
+                <td>{{ i["day"] }}</td>
+                <td>{{ i["price"] }}</td>
+                <td>{{ i["bought"] }}</td>
+                <td>{{ i["sold"] }}</td>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    buy
+{% endblock %}
+
+{% block main %}
+<h1>Account</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Quantity</th>
+            <th>Current Price</th>
+            <th>Value</th>
+            <th>Cash</th>
+            <th>Net Asset Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{usd(cash[0]["cash"])}}</td>
+                <td>{{ usd(nav[0]["total"] + cash[0]["cash"]) }}</td>
+        </tr>
+
+        {% for i in stocks %}
+            <tr>
+                <td>{{ i["symbol"] }}</td>
+                <td>{{ i["quantity"] }}</td>
+                <td> {{usd(i["current_price"])}} </td>
+                <td id="value">{{usd(i["total"])}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    quoted
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> {{q.symbol}}</td>
+            <td> {{q.name}}</td>
+            <td>{{q.price}}</td>
+        </tr>
+    </tbody>
+</table>
+<form action="/quoted" method="post">
+    <input type="text" id="fname" name="symbol" value="{{q.symbol}}" readonly>
+    <input type="text" id="fname" name="price" value="{{q.price}}" readonly>
+    <button class="btn btn-primary" type="submit">Buy</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    buy
+{% endblock %}
+
+{% block main %}
+
+{% block scripts %}
+    <script>
+        function total(price, quantity)
+        {
+            x = price * quantity;
+            obj("x").value = x;
+        }
+        function obj(id)
+        {
+            return document.getElementById(id);
+        }
+    </script>
+{% endblock %}
+
+    {% if sym %}
+
+    <form action="/buy" method="post">
+        <h5>symbol</h5>
+        <input type="text" id="symbol" name="symbol" value="{{sym}}" readonly>
+        <h5>price</h5>
+        <input type="text" id="price" name="price" value="{{price}}" readonly>
+        <h5>total</h5>
+        <input type="text" id="x" name="x" readonly>
+        <h5>quantity</h5>
+        <input type="number" id="quantity" name="quantity" placeholder="quantity" min="1" max="100">
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+    {% else %}
+
+    <form action="/buy" method="post">
+        <input autocomplete="off" type="text" id="symbol" name="symbol" placeholder="symbol" value="{{sym}}" autofocus>
+        <input type="text" id="x" name="x" readonly>
+        <input type="number" id="quantity" name="quantity" placeholder="quantity" min="1" max="100">
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+    {% endif %}
+
+{% endblock %}
